@@ -1,0 +1,41 @@
+@model IEnumerable<MVC.Dev._2023.Models.Consumo>
+
+@{
+    ViewData["Title"] = "Lista de Consumos";
+}
+
+<h1>Lista de Consumos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Adicionar Consumo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Descricao)</th>
+            <th>@Html.DisplayNameFor(model => model.Data)</th>
+            <th>@Html.DisplayNameFor(model => model.Valor)</th>
+            <th>@Html.DisplayNameFor(model => model.Quilometragem)</th>
+            <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+            <th>@Html.DisplayNameFor(model => model.Veiculo)</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+            <td>@Html.DisplayFor(modelItem => item.Data)</td>
+            <td>@Html.DisplayFor(modelItem => item.Valor)</td>
+            <td>@Html.DisplayFor(modelItem => item.Quilometragem)</td>
+            <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+            <td>@Html.DisplayFor(modelItem => item.Veiculo.Nome)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Visualizar</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
