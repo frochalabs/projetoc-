@@ -18,5 +18,23 @@ namespace MVC.Dev._2023.Controllers
             var dados = await _context.Veiculos.ToListAsync();
             return View(dados);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Veiculo veiculo)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(veiculo);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(veiculo);
+        }
     }
 }
