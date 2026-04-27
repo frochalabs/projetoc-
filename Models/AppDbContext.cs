@@ -9,5 +9,6 @@ namespace MVC.Dev._2023.Models
         }
 
         public DbSet<Veiculo> Veiculos { get; set; }
+        public DbSet<Consumo> Consumos { get; set; }
     }
 }

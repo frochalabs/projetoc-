@@ -22,5 +22,7 @@ namespace MVC.Dev._2023.Models
         [Required(ErrorMessage = "Obrigatório informar o ano do modelo!")]
         [Display(Name = "Ano do Modelo")]
         public int? AnoModelo { get; set; }
+
+        public ICollection<Consumo> Consumos { get; set; }
     }
 }
