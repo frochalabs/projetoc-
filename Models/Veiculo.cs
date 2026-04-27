@@ -17,5 +17,8 @@ namespace MVC.Dev.2023.Models
 
         [Required(ErrorMessage = "Obrigatório informar o ano de fabricação!")]
         public int AnoFabricacao { get; set; }
+
+        [Required(ErrorMessage = "Obrigatório informar o ano do modelo!")]
+        public int AnoModelo { get; set; }
     }
 }
