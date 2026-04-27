@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MVC.Dev.2023.Models
+namespace MVC.Dev._2023.Models
 {
     [Table("Veiculos")]
     public class Veiculo

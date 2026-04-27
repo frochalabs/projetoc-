@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace MVC.Dev.2023.Models
+namespace MVC.Dev._2023.Models
 {
     public class AppDbContext : DbContext
     {
