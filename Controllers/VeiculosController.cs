@@ -15,8 +15,7 @@ namespace MVC.Dev._2023.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var dados = await _context.Veiculos.ToListAsync();
-            return View(dados);
+            return View(await _context.Veiculos.ToListAsync());
         }
 
         public IActionResult Create()
@@ -35,6 +34,84 @@ namespace MVC.Dev._2023.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(veiculo);
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var veiculo = await _context.Veiculos.FindAsync(id);
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+            return View(veiculo);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Veiculo veiculo)
+        {
+            if (id != veiculo.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(veiculo);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(veiculo);
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var veiculo = await _context.Veiculos.FirstOrDefaultAsync(m => m.Id == id);
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+
+            return View(veiculo);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var veiculo = await _context.Veiculos.FirstOrDefaultAsync(m => m.Id == id);
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+
+            return View(veiculo);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var veiculo = await _context.Veiculos.FindAsync(id);
+            if (veiculo != null)
+            {
+                _context.Veiculos.Remove(veiculo);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

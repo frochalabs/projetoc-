@@ -17,10 +17,10 @@ namespace MVC.Dev._2023.Models
 
         [Required(ErrorMessage = "Obrigatório informar o ano de fabricação!")]
         [Display(Name = "Ano de Fabricação")]
-        public int? AnoFabricacao { get; set; } 
+        public int? AnoFabricacao { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o ano do modelo!")]
         [Display(Name = "Ano do Modelo")]
-        public int? AnoModelo { get; set; } 
+        public int? AnoModelo { get; set; }
     }
 }
